@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import BtnStore from "./BtnStore";
 
 
 const UsSection = () => {
@@ -23,7 +23,7 @@ const UsSection = () => {
                             clientes una <b>atención personalizada</b>.
                         </p>    
                     <h3>¡BIENVENIDO/A NAKAMA!</h3>
-                    <Link to="/category/all"><button>Ir a la tienda</button></Link>
+                    <BtnStore />
                 </div>
             </section>
         </>
