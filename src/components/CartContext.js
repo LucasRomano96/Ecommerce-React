@@ -33,8 +33,27 @@ const CartContextProvider = (props) => {
         setCartList(filter);
     }
 
+    const calcItemsQty = () => {
+        let sum = 0;
+        for (let key of cartList) {
+            sum += key.qtyItem;
+        }
+        return sum;
+    }
+
+    const calcTotalPerItem = (idItem) => {
+        let index = cartList.map(item => item.idItem).indexOf(idItem);
+        return cartList[index].costItem * cartList[index].qtyItem;
+    }
+
+    const sumProducts = () => {
+        let array = cartList.map(item => calcTotalPerItem(item.idItem));
+        let sum = array.reduce((acc, item) => acc = acc + item);
+        return sum;
+    }
+
     return(
-        <CartContext.Provider value={{cartList, addToCart, clearList, removeItem}}>
+        <CartContext.Provider value={{cartList, addToCart, clearList, removeItem, calcItemsQty , calcTotalPerItem, sumProducts }}>
             {props.children}
         </CartContext.Provider>
     )
