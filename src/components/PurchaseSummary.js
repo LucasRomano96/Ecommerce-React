@@ -1,8 +1,52 @@
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
+import { collection, doc, setDoc, serverTimestamp, updateDoc, increment } from "firebase/firestore";
+import { db } from "../utilities/firebaseConfig";
 
 const PurchaseSummary = () => {
-    const { calcItemsQty, sumProducts } = useContext(CartContext);
+    const { calcItemsQty, sumProducts, cartList, clearList } = useContext(CartContext);
+
+    const createOrder = () => {
+        const itemsForDB = cartList.map(item => ({
+            id: item.idItem,
+            tittle: item.tittleItem,
+            price: item.priceItem,
+            qty: item.qtyItem
+          }));
+
+          cartList.forEach(async (item) => {
+            const itemRef = doc(db, "products", item.idItem);
+            await updateDoc(itemRef, {
+              stock: increment(-item.qtyItem)
+            });
+          });
+        
+        
+        let order = {
+            buyer:{
+                name:"Sebastian",
+                email:"sebastian@mail.com",
+                phone:"23456789"
+            },
+            date: serverTimestamp(),
+            items: itemsForDB,
+            total: sumProducts()
+            
+        };
+        console.log(order);
+
+        const createOrderInFirestore = async () => {
+            const newOrderRef = doc(collection(db, "orders"));
+            await setDoc(newOrderRef, order);
+            return newOrderRef;
+          }
+        
+          createOrderInFirestore()
+            .then(result => alert('Your order has been created. Please take note of the ID of your order.\n\n\nOrder ID: ' + result.id + '\n\n'))
+            .catch(err => console.log(err));
+        
+          clearList();
+    }
 
     return(
         <section className="container d-flex justify-content-center mb-5">
@@ -21,7 +65,7 @@ const PurchaseSummary = () => {
                     <span>${sumProducts()}</span>
                 </div>
                 <div className="text-center">
-                    <button className="btn_terminar-compra">Terminar mi compra</button>
+                    <button onClick={createOrder} className="btn_terminar-compra">Terminar mi compra</button>
                 </div>
             </div>
         </section>

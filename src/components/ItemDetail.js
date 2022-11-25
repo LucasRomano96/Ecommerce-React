@@ -18,13 +18,13 @@ const ItemDetail = ({ item }) => {
         {
             item && item.pictureUrl ?
 
-                <div className="d-flex mt-5" key={item.id}>
-                    <div>
+                <div className="d-flex mt-5 align-items-center" key={item.id}>
+                    <div className="img_size">
                         <img src={item.pictureUrl} alt="..."></img>
                     </div>
                     <div className="item_detail">
-                        <h2 className="item_detail_title">{item.title}</h2>
-                        <span className="item_detail_price">{item.price}</span>
+                        <h2 className="item_detail_title">{item.tittle}</h2>
+                        <span className="item_detail_price">${item.price}</span>
                         <p className="item_detail_description">{item.description}</p>
                         <span>{item.stock} unidades disponibles</span>
                         {

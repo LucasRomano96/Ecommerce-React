@@ -14,7 +14,7 @@ const CartContextProvider = (props) => {
                 {
                     idItem: item.id,
                     imgItem: item.pictureUrl,
-                    nameItem: item.title,
+                    nameItem: item.tittle,
                     priceItem: item.price,
                     qtyItem: quantityToAdd
                 }]);
@@ -43,7 +43,7 @@ const CartContextProvider = (props) => {
 
     const calcTotalPerItem = (idItem) => {
         let index = cartList.map(item => item.idItem).indexOf(idItem);
-        return cartList[index].costItem * cartList[index].qtyItem;
+        return cartList[index].priceItem * cartList[index].qtyItem;
     }
 
     const sumProducts = () => {

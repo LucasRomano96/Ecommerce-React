@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
-import BtnStore from "./BtnStore";
+import BtnStore from "./BtnStore"
 import image from "../images/Icono/Logo-Ecommerce.png";
 import { Link } from "react-router-dom";
 import PurchaseSummary from "./PurchaseSummary";
@@ -41,21 +41,19 @@ const Cart = () => {
                         <div className="cart_list">
                             {cartList.map((item) => 
                                 <div key={item.idItem}>
-                                    <div className="d-flex">
+                                    <div className="d-flex img_cart">
                                         <img src={item.imgItem}></img>
                                         <div>
-                                            <span><b>Producto: </b>{item.tittleItem}</span>
+                                            <span><b>Producto: </b>{item.nameItem}</span>
                                             <span><b>Precio: </b>${item.priceItem} c/u</span>
                                             <span><b>Cantidad: </b>{item.qtyItem} item/s</span><br />
                                             <div className="cart_list-total">
-                                                <span className="fs-5"><b>Precio Total:</b> ${calcTotalPerItem(item.idItem)}</span>
+                                                <span className="fs-5"><b>Precio Total:</b> ${calcTotalPerItem(item.idItem)} </span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="cart_remove-item-cont">
-                                        <button className="cart_remove-item" onClick={() => removeItem(item.idItem)}>
-                                            
-                                        </button>
+                                    <div>
+                                        <button className="cart_remove-item" onClick={() => removeItem(item.idItem)}>Eliminar</button>
                                     </div>
                                     
                                     <hr />

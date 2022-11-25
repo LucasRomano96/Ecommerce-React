@@ -126,18 +126,6 @@ background-color: #791515;
 color: #f2f2fc;
 }
 
-.btn_agregar {
-border: none;
-box-shadow: 0 0 10px;
-font-weight: bold;
-font-size: 1rem;
-border-radius: 10px;
-height: 3rem;
-width: 7rem;
-background-color: #6611ac;
-color: #f2f2fc;
-}
-
 .nav-links {
 color: #f2f2fc;
 font-family: 'Alfa Slab One', cursive;
@@ -210,7 +198,7 @@ box-shadow: 1px 1px 1px 2px #0a0a0c;
 }
 
 .btn_store:hover .btn_store-icono {
-left: calc(100% - 50px);
+left: calc(100% - 170px);
 opacity: 1;
 }
 
@@ -219,7 +207,7 @@ color: #830bb3;
 }
 
 .btn_store:hover span {
-left: 20px;
+right: 20px;
 color: #830bb3;
 }
 
@@ -289,4 +277,41 @@ height: 250px;
 .cart_list-total {
   text-align: center;
   margin-top: 20px;
+}
+
+.img_size img{
+  width: 500px;
+  height: 600px;
+}
+
+.img_cart img {
+  width: 200px;
+  height: 300px;
+}
+
+.cart_remove-item {
+  width: 100px;
+  height: 50px;
+  background-color: #873bce;
+  color: white;
+}
+
+.cart_button-clear{
+  border-radius: 10%;
+  background-color: #1215c5;
+  color: whitesmoke;
+}
+
+.navbar-color{
+  background-color: #7336ac;
+}
+
+.btn_terminar-compra{
+  background-color: #6d4197;
+  color: whitesmoke;
+}
+
+.button_finish{
+  background-color: #6d4197;
+  color: whitesmoke;
 }
