@@ -9,18 +9,11 @@ const PurchaseSummary = () => {
     const createOrder = () => {
         const itemsForDB = cartList.map(item => ({
             id: item.idItem,
-            tittle: item.tittleItem,
+            tittle: item.nameItem,
             price: item.priceItem,
             qty: item.qtyItem
           }));
 
-          cartList.forEach(async (item) => {
-            const itemRef = doc(db, "products", item.idItem);
-            await updateDoc(itemRef, {
-              stock: increment(-item.qtyItem)
-            });
-          });
-        
         
         let order = {
             buyer:{
@@ -42,7 +35,12 @@ const PurchaseSummary = () => {
           }
         
           createOrderInFirestore()
-            .then(result => alert('Your order has been created. Please take note of the ID of your order.\n\n\nOrder ID: ' + result.id + '\n\n'))
+            .then(result =>  cartList.forEach(async (item) => {
+                                const itemRef = doc(db, "products", item.idItem);
+                                 await updateDoc(itemRef, {
+                                stock: increment(-item.qtyItem)
+                            });
+              }))
             .catch(err => console.log(err));
         
           clearList();
