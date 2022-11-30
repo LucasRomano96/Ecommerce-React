@@ -1,5 +1,7 @@
 # Ecommerce React "Manga-Shop"
 
+[![Captura-de-Ecommerce.png](https://i.postimg.cc/tCbrstXL/Captura-de-Ecommerce.png)](https://postimg.cc/c6D7j3tm)
+
 Este proyecto es un sitio web desarrollado como trabajo final para el curso de React en Coderhouse. El mismo es un ecommerce donde se puede comprar tomos de manga de diferentes generos.
 
 La finalidad de este sitio es la de ofrecer productos y que el usuario pueda tener una experiencia de compra real (sin pasarela de pagos). Consta de una tienda con 3 secciones donde se pueden ver los distintos productos, los cuales están alojados en una base de datos (Firebase).
